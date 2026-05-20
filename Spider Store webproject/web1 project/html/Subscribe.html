@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscribe</title>
+    <link rel="stylesheet" href="../css/Subscribe.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            <img src="../img/logo 1.png" alt="Logo">
+            <h3>Spider Store</h3>
+        </div>
+        <div class="nav-links">
+            <a href="../html/home.html" target="_blank">Home</a>
+            <a href="../html/products.html" target="_blank">Products</a>
+            <a href="../html/contact.html" target="_blank">Contact</a>
+            <a href="../html/Subscribe.html" target="_blank">Subscribe</a>
+            <a href="../html/FAQ.html" target="_blank">FAQs</a>
+        </div>
+    </nav>
+</header>
+
+<h2>Subscribe</h2>
+
+<form onsubmit="return formValidate()">
+
+    <fieldset>
+        <legend>Personal Information</legend>
+
+        <label>Full Name</label>
+        <input type="text" id="fullname">
+        <span id="err_fullname" class="error"></span>
+
+        <label>Username</label>
+        <input type="text" id="username">
+        <span id="err_username" class="error"></span>
+
+        <label>Password</label>
+        <input type="password" id="password">
+        <span id="err_password" class="error"></span>
+
+        <label>Confirm Password</label>
+        <input type="password" id="password_confirm">
+        <span id="err_password_confirm" class="error"></span>
+
+        <label>Email</label>
+        <input type="email" id="email">
+        <span id="err_email" class="error"></span>
+
+        <label>Confirm Email</label>
+        <input type="email" id="email_confirm">
+        <span id="err_email_confirm" class="error"></span>
+
+        <label>Phone Number</label>
+        <input type="text" id="phone" value="+974">
+        <span id="err_phone" class="error"></span>
+    </fieldset>
+
+    <fieldset>
+        <legend>Shipping Address</legend>
+
+        <label>Building Number</label>
+        <input type="text" id="building">
+        <span id="err_building" class="error"></span>
+
+        <label>Street Name</label>
+        <input type="text" id="street">
+        <span id="err_street" class="error"></span>
+
+        <label>City</label>
+        <select id="city">
+            <option value="">Select city</option>
+            <option value="Doha">Doha</option>
+            <option value="Al Rayyan">Al Rayyan</option>
+            <option value="Al Wakrah">Al Wakrah</option>
+            <option value="Lusail">Lusail</option>
+            <option value="Umm Salal">Umm Salal</option>
+        </select>
+        <span id="err_city" class="error"></span>
+
+        <label><input type="checkbox" id="newsletter"> Subscribe to our newsletter</label>
+    </fieldset>
+
+    <button type="submit">Send</button>
+    <button type="reset">Clear</button>
+
+</form>
+
+<script>
+function formValidate() {
+    document.querySelectorAll(".error").forEach(e => e.innerHTML = "");
+
+    let valid = true;
+
+    let fullname = document.getElementById('fullname').value.trim();
+    let username = document.getElementById('username').value.trim();
+    let password = document.getElementById('password').value.trim();
+    let password2 = document.getElementById('password_confirm').value.trim();
+    let email = document.getElementById('email').value.trim();
+    let email2 = document.getElementById('email_confirm').value.trim();
+    let phone = document.getElementById('phone').value.trim();
+    let building = document.getElementById('building').value.trim();
+    let street = document.getElementById('street').value.trim();
+    let city = document.getElementById('city').value;
+
+    if(fullname === "") { document.getElementById('err_fullname').innerHTML = "Full name is required"; valid = false; }
+    if(username === "") { document.getElementById('err_username').innerHTML = "Username is required"; valid = false; }
+    if(password === "") { document.getElementById('err_password').innerHTML = "Password is required"; valid = false; }
+    if(password2 === "") { document.getElementById('err_password_confirm').innerHTML = "Confirm your password"; valid = false; }
+    if(password !== "" && password2 !== "" && password !== password2) { document.getElementById('err_password_confirm').innerHTML = "Passwords do not match"; valid = false; }
+    if(email === "") { document.getElementById('err_email').innerHTML = "Email is required"; valid = false; }
+    if(email2 === "") { document.getElementById('err_email_confirm').innerHTML = "Confirm your email"; valid = false; }
+    if(email !== "" && email2 !== "" && email !== email2) { document.getElementById('err_email_confirm').innerHTML = "Emails do not match"; valid = false; }
+
+    let ph = phone.replace("+974", "");
+    if(ph === "") { document.getElementById('err_phone').innerHTML = "Phone number is required"; valid = false; }
+    else if(!/^\d+$/.test(ph)) { document.getElementById('err_phone').innerHTML = "Numbers only"; valid = false; }
+
+    if(building === "") { document.getElementById('err_building').innerHTML = "Building number is required"; valid = false; }
+    if(street === "") { document.getElementById('err_street').innerHTML = "Street name is required"; valid = false; }
+    if(city === "") { document.getElementById('err_city').innerHTML = "Please select a city"; valid = false; }
+
+    return valid;
+}
+</script>
+
+</body>
+</html>

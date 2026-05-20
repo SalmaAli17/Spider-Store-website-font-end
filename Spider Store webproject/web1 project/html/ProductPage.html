@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="../css/ProductPage.css">
+</head>
+<body>
+
+<header>
+       <nav>
+        <div class="logo">
+            <img src="../img/logo 1.png" alt="Logo">
+
+            <h3>Spider Store</h3>
+        </div>
+
+        <div class="nav-links">
+            <a href="../html/home.html" target="_blank">Home</a>
+            <a href="../html/products.html" target="_blank">Products</a>
+            <a href="../html/contact.html"target="_blank">Contact</a>
+            <a href="../html/Subscribe.html" target="_blank">Subscribe</a>
+            <a href="../html/FAQ.html" target="_blank">FAQs</a>
+        </div>
+       </nav>
+    </header>
+
+<main>
+    <div class="product">
+        <img src="../img/T-shirt 1.jpeg" alt="Classic Black T-Shirt">
+        <h2>Classic Black T-Shirt</h2>
+        <p>Soft cotton black tee perfect for daily wear.</p>
+        <p class="price">$20</p>
+        <p class="rating">⭐⭐⭐⭐☆</p>
+        <p class="delivery">Delivery: 3-5 business days</p>
+
+        <div class="buttons">
+            <button class="buy">Buy Now</button>
+            <button class="favorite">Add to Favorites</button>
+        </div>
+
+        <h3>Comments</h3>
+        <div class="comments">
+            <p><b>Ali:</b> Love this tee! Very comfy.</p>
+            <p><b>Sara:</b> Great quality, perfect fit.</p>
+        </div>
+
+        <div class="add-comment">
+            <input type="text" id="newComment" placeholder="Write a comment...">
+            <button onclick="addComment()">Add Comment</button>
+        </div>
+    </div>
+</main>
+
+<script>
+    function addComment() {
+        const commentInput = document.getElementById('newComment');
+        const commentText = commentInput.value.trim();
+        if(commentText !== "") {
+            const commentsDiv = document.querySelector('.comments');
+            const newP = document.createElement('p');
+            newP.innerHTML = `<b>You:</b> ${commentText}`;
+            commentsDiv.appendChild(newP);
+            commentInput.value = "";
+        } else {
+            alert("Please write a comment first!");
+        }
+    }
+</script>
+
+<footer>
+    <p>With great power comes great responsibility</p>
+</footer>
+
+</body>
+</html>

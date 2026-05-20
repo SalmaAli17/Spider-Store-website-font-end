@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact</title>
+<link rel="stylesheet" href="../css/contact.css">
+</head>
+<body>
+
+<header>
+   <nav>
+    <div class="logo">
+        <img src="../img/logo 1.png" alt="Logo">
+        <h3>Spider Store</h3>
+    </div>
+    <div class="nav-links">
+        <a href="../html/home.html" target="_blank">Home</a>
+        <a href="../html/products.html" target="_blank">Products</a>
+        <a href="../html/contact.html" target="_blank">Contact</a>
+        <a href="../html/Subscribe.html" target="_blank">Subscribe</a>
+        <a href="../html/FAQ.html" target="_blank">FAQs</a>
+    </div>
+   </nav>
+</header>
+
+<section class="main">
+<h2>Contact us</h2>
+
+<div class="contact-info">
+    <h3>Company Information</h3>
+    <div><b>Head Office:</b> Doha, Qatar</div>
+    <div><b>Hours:</b> Sun–Thu, 8:00 AM – 4:00 PM</div>
+    <div><b>Phone:</b> +974 1234 5678</div>
+    <div><b>Email:</b> support@company.com</div>
+</div>
+
+<iframe 
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.6530594557953!2d51.481075000000004!3d25.360664000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45dcfb2722e9e9%3A0xd1b07d34e11ee6d5!2sUniversity%20of%20Doha%20for%20Science%20and%20Technology!5e1!3m2!1sen!2sqa!4v1764423725662!5m2!1sen!2sqa">
+</iframe>
+
+<form action="https://sit.cna-qatar.edu.qa/processform.php" method="post" onsubmit="return validateform()">
+    <fieldset>
+        <legend><b>For direct message</b></legend>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+        <span id="err-name" class="error"></span>
+
+        <label for="message">Your message</label>
+        <input type="text" id="message" name="message">
+        <span id="err-message" class="error"></span>
+
+        <label>Preferred Contact Method</label>
+        <div>
+            <label><input type="radio" name="method" value="phone"> phone call</label>
+            <label><input type="radio" name="method" value="email"> email</label>
+            <span id="err-radio" class="error"></span>
+
+            <label>Phone number / Email:</label>
+            <input type="text" id="contact_info" name="contact_info">
+            <span id="err-number" class="error"></span>
+        </div>
+        
+    </fieldset>
+
+    <input type="submit" value="Submit" class="submit">
+    <input type="reset" value="Reset" class="reset">
+</form>
+
+</section>
+
+<script>
+function validateform() {
+    let valid = true;
+
+    let name = document.getElementById("name").value.trim();
+    let message = document.getElementById("message").value.trim();
+    let radios = document.getElementsByName("method");
+    let contact_info = document.getElementById("contact_info").value.trim();
+
+    document.getElementById("err-name").innerHTML = "";
+    document.getElementById("err-message").innerHTML = "";
+    document.getElementById("err-radio").innerHTML = "";
+    document.getElementById("err-number").innerHTML = "";
+
+    if(name === "") {
+        document.getElementById("err-name").innerHTML = "Name is required";
+        valid = false;
+    }
+
+    if(message === "") {
+        document.getElementById("err-message").innerHTML = "Message is required";
+        valid = false;
+    }
+
+    let radioSelected = false;
+    for(let i=0; i<radios.length; i++) {
+        if(radios[i].checked) {
+            radioSelected = true;
+            break;
+        }
+    }
+    if(!radioSelected) {
+        document.getElementById("err-radio").innerHTML = "Select a contact method";
+        valid = false;
+    }
+
+    if(contact_info === "") {
+        document.getElementById("err-number").innerHTML = "Enter your phone or email";
+        valid = false;
+    }
+
+    return valid;
+}
+</script>
+
+<footer>
+<p>With great power comes great responsibility</p>
+</footer>
+
+</body>
+</html>
